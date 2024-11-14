@@ -10,21 +10,22 @@ screen.setup(width=600,height=600)
 starting_positions = [(-20,0),(-40,0)]
 snakes = []
 
-
+# Função para criar as partes da cobra
 def snakeCreation(snake):
-    snake.shapesize(2)
+    snake.shapesize(1)
     snake.shape("square")
     snake.color("white")
     snake.penup()
 
+# Criando a cobra
 for position in starting_positions:
     newSnake = Turtle()
     snakeCreation(newSnake)
     newSnake.goto(position)
     snakes.append(newSnake)
 
-    headSnake =Turtle()
-    snakeCreation(headSnake)
+headSnake =Turtle()
+snakeCreation(headSnake)
 
 
 wanna_play = str(screen.textinput("Wanna play?", "YES / NO"))
@@ -35,31 +36,39 @@ else:
 ####################################### SNAKE MOVIMENT #############################################
 def turnSnakeUP():
     headSnake.setheading(90)
+
 def turnSnakeRight():
     headSnake.setheading(0)
+
 def turnSnakeDown():
     headSnake.setheading(270)
+
 def turnSnakeLeft():
     headSnake.setheading(180)
 
-x = 3
+
+
+x = 1
 
 while game:
+    # Momento em que lembrei sobre escopo
+    screen.listen()
+
+        # Teclas do jogo
+    screen.onkey(turnSnakeUP, "w" )
+    screen.onkey(turnSnakeRight, "d" )
+    screen.onkey(turnSnakeDown, "s" )
+    screen.onkey(turnSnakeLeft, "a" )
+        #-------------------------------
+    #------------------------------------
+
     headSnake.forward(x)
-    screen.onkey(turnSnakeUP, "w" or "W")
-    screen.onkey(turnSnakeRight, "d" or "D")
-    screen.onkey(turnSnakeDown, "s" or "S")
-    screen.onkey(turnSnakeLeft, "a" or "A")
+    
 
-    snakePosition = newSnake.pos()
 
-    if snakePosition[0] >= 299.00:
-        game = False
-    elif snakePosition[0] <= -299.00:
-        game = False
-    elif snakePosition[1] <= -299.00:
-        game = False
-    elif snakePosition[1] >= 299.00:
+
+    snakePosition = headSnake.pos()
+    if snakePosition[0] >= 299.00 or snakePosition[0] <= -299.00 or snakePosition[1] <= -299.00 or snakePosition[1] >= 299.00:
         game = False
 
 ####################################### END SNAKE MOVIMENT #############################################

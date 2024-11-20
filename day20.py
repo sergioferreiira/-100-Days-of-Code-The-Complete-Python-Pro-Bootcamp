@@ -28,6 +28,10 @@ headSnake =Turtle()
 snakeCreation(headSnake)
 
 
+
+
+
+
 wanna_play = str(screen.textinput("Wanna play?", "YES / NO"))
 if wanna_play.lower() == "yes":
     game = True
@@ -64,8 +68,9 @@ while game:
 
     headSnake.forward(x)
     
-
-
+    positionOfMainSnake = headSnake.pos()
+    for snake in snakes:
+        snake.goto(positionOfMainSnake)
 
     snakePosition = headSnake.pos()
     if snakePosition[0] >= 299.00 or snakePosition[0] <= -299.00 or snakePosition[1] <= -299.00 or snakePosition[1] >= 299.00:

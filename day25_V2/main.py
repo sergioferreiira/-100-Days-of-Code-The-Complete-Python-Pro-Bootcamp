@@ -4,10 +4,11 @@ states = pandas.read_csv("day25_V2/50_states.csv")
 
 while True:
  stateName = input(str("type the name of the state: "))
- print(stateName in states["state"])
+
+ resultado = states.loc[states["state"] == stateName]
 
 
-
+ print(resultado)
 # print(states)
 
 # screen = turtle.Screen()

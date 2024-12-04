@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # student_dict = {
 #     "student": ["Angela", "James", "Lily"], 
 #     "score": [56, 76, 98]
@@ -54,16 +54,3 @@ def oldNatoEncoding(name):
     print(nameEncoded)
     
 oldNatoEncoding("sergio")
-=======
-import pandas as pd
-
-x = pd.read_csv("day26/natoAlpab.csv")
-
-def encodingNato(name):
- name = [l.upper() for l in name]
- newNameEncoded = [row.code for i in name for index, row in x.iterrows() if row.letter == i]
- print(newNameEncoded)
-
-
-encodingNato("sergio")
->>>>>>> 191919951c22a6d960cd851b80db4c41b2123a33
